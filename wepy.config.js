@@ -8,9 +8,11 @@ module.exports = {
   build: {},
   resolve: {
     alias: {
-      '@': path.join(__dirname, 'src')
+      '@': path.join(__dirname, 'src'),
+      'config': path.join(__dirname, 'src/config/index'),
+      'data-source': path.join(__dirname, 'src/service/index')
     },
-    aliasFields: ['wepy'],
+    aliasFields: [],
     modules: ['node_modules']
   },
   compilers: {

@@ -1,13 +1,4 @@
-<style lang="less">
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
-</style>
+<style lang="less"></style>
 
 <script>
 import wepy from 'wepy'
@@ -16,25 +7,75 @@ import 'wepy-async-function'
 import { setStore } from 'wepy-redux'
 import configStore from './store'
 
+import { createRoute } from './util/route-helper'
+import { router } from 'config'
+
 const store = configStore()
 setStore(store)
+const routes = createRoute(router)
 
 export default class extends wepy.app {
   config = {
-    pages: [
-      'pages/index'
-    ],
+    pages: routes,
     window: {
-    }
+      navigationBarBackgroundColor: '', // 导航栏背景颜色，如"#000000"
+      navigationBarTextStyle: '', // 导航栏标题颜色，仅支持 black/white
+      navigationBarTitleText: '', // 导航栏标题文字内容
+      backgroundColor: '', // 窗口的背景色
+      backgroundTextStyle: '', // 下拉 loading 的样式，仅支持 dark/light
+      enablePullDownRefresh: false, // 是否开启下拉刷新
+      onReachBottomDistance: 50 // 页面上拉触底事件触发时距页面底部距离，单位为px
+    },
+    tabBar: {
+      color: '', // tab 上的文字默认颜色
+      selectedColor: '', // tab 上的文字选中时的颜色
+      backgroundColor: '', // tab 的背景色
+      borderStyle: '', // tabbar上边框的颜色， 仅支持 black/white
+      position: '', // 可选值 bottom、top
+      list: [
+        // tab 的列表，详见 list 属性说明，最少2个、最多5个 tab
+        {
+          pagePath: '', // 页面路径，必须在 pages 中先定义
+          text: '', // tab 上按钮文字
+          iconPath: '', // 图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px，当 postion 为 top 时，此参数无效，不支持网络图片
+          selectedIconPath: '' // 选中时的图片路径，icon 大小限制为40kb，建议尺寸为 81px * 81px ，当 postion 为 top 时，此参数无效
+        }
+      ]
+    },
+    networkTimeout: {
+      request: 60000, // wx.request的超时时间，单位毫秒，默认为：60000
+      connectSocket: 60000, // wx.connectSocket的超时时间，单位毫秒，默认为：60000
+      uploadFile: 60000, // wx.uploadFile的超时时间，单位毫秒，默认为：60000
+      downloadFile: 60000 // wx.downloadFile的超时时间，单位毫秒，默认为：60000
+    },
+    // 可以在开发者工具中开启 debug 模式，在开发者工具的控制台面板，调试信息以 info 的形式给出，其信息有Page的注册，页面路由，数据更新，事件触发 。 可以帮助开发者快速定位一些常见的问题。
+    debug: false
   }
 
-  constructor () {
+  constructor() {
     super()
     this.use('requestfix')
     this.use('promisify')
   }
+  /**
+   * 前台、后台定义： 当用户点击左上角关闭，或者按了设备 Home 键离开微信，小程序并没有直接销毁，而是进入了后台；
+   * 当再次进入微信或再次打开小程序，又会从后台进入前台。
+   * 需要注意的是：只有当小程序进入后台一定时间，或者系统资源占用过高，才会被真正的销毁。
+   * 
+   */
+  // 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
+  onLaunch(options) { }
 
-  onLaunch() {
-  }
+  // 当小程序启动，或从后台进入前台显示，会触发 onShow
+  onShow(options) { }
+
+  // 当小程序从前台进入后台，会触发 onHide
+  onHide() { }
+
+  // 当小程序发生脚本错误，或者 api 调用失败时，会触发 onError 并带上错误信息
+  onError(msg) { }
+
+  // 当小程序出现要打开的页面不存在的情况，会带上页面信息回调该函数，详见下文
+  onPageNotFound(e) { }
 }
 </script>

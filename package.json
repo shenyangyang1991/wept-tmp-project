@@ -1,15 +1,12 @@
 {
-  "name": "tmp",
+  "name": "wepy-template",
   "version": "1.0.0",
-  "description": "template for a wepy.",
+  "description": "a wepy template",
   "main": "dist/app.js",
   "scripts": {
     "dev": "wepy build --watch",
     "build": "cross-env NODE_ENV=production wepy build --no-cache",
     "clean": "find ./dist -maxdepth 1 -not -name 'project.config.json' -not -name 'dist' | xargs rm -rf"
-  },
-  "wepy": {
-    "module-a": false
   },
   "author": "shenyangyang",
   "license": "MIT",

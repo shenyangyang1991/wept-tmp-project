@@ -1,5 +1,5 @@
 {
-	"description": "template for a wepy.",
+	"description": "",
 	"setting": {
 		"urlCheck": false,
 		"es6": false,
@@ -9,7 +9,7 @@
 	},
 	"compileType": "miniprogram",
 	"appid": "touristappid",
-	"projectname": "tmp-project",
+	"projectname": "",
 	"miniprogramRoot": "./dist",
 	"condition": {}
 }
