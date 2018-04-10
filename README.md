@@ -106,7 +106,9 @@ if (prod) {
 ├── src                    代码编写的目录（该目录为使用WePY后的开发目录）
 |   ├── assets             项目静态资源 （image, style...）
 |   |   ├── image
+|   |   ├── font
 |   |   └── style
+|   ├── service            业务数据
 |   ├── mixins             wepy混合目录
 |   ├── store              wepy&redux 代码目录
 |   ├── components         WePY组件目录（组件不属于完整页面，仅供完整页面或其他组件引用）
