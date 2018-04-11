@@ -233,6 +233,12 @@ export default class Index extends wepy.page {
 
   data = {}
 
+  methods = {}
+
+  props = {}
+
+  events = {}
+
   // 生命周期函数--监听页面加载
   onLoad(options) { }
 
