@@ -1,3 +1,7 @@
+/**
+ * 路由转换
+ */
+
 import _ from 'loadsh'
 
 export const createRoute = (router) => {
