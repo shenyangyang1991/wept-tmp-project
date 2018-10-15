@@ -5,6 +5,7 @@
   "wepy": { // 在文件定义 aliasFields
     "module-a": false // false 代表 {}
     "module-b": "./src/config.js" // 库的路径
+    "./src/components/list": "./src/components/wepy-list.wpy" // 文件别名
   },
 ```
 
